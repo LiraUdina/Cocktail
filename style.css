@@ -1,80 +1,109 @@
 .container {
-    position: absolute;
-    width: 100%;
-    height: 90px;
-    left: 0;
-    top: 0;
-    background: #54357A;
+  position: absolute;
+  width: 100%;
+  height: 90px;
+  left: 0;
+  top: 0;
+  background: #54357A;
+  z-index: 1;
+}
 
-  }
-  
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px 24px;
+  gap: 10px;
+  position: absolute;
+  width: 90%;
+  max-width: 760px;
+  height: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 19px;
+  background: #FFFFFF;
+  border-radius: 40px;
+  z-index: 2;
+}/*панель ввода*/
+
+.knopka {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 16px 40px;
+  gap: 10px;
+  position: absolute;
+  width: 158px;
+  height: 51px;
+  right: 5%;
+  top: 19px;
+  background: #FFFFFF;
+  border-radius: 40px;
+  z-index: 2;
+}/*кнопка сброса*/
+
+.content-container {
+  position: relative;
+  top: 90px;
+}
+
+.content {
+  height: calc(100vh - 180px);
+  width: 90%;
+  max-width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.coctail-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}/*изображения коктейля*/
+
+.coctail {
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+} /* заголовка коктейля*/
+
+.coctail2 {
+  margin-top: 0;
+  font-size: 12px;
+  text-align: center;
+ }/*описания коктейля*/
+
+.content-block {
+  width: 100%;
+  max-width: 250px;
+  height: 400px;
+  margin-bottom: 50px;
+  background-size: cover;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
   .search {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px 24px;
-    gap: 10px;
-    position: absolute;
-    width: 760px;
-    height: 52px;
-    left: 140px;
-    top: 19px;
-    background: #FFFFFF;
-    border-radius: 40px;
+    width: 95%;
+    max-width: 500px;
+    left: 48%;
+    transform: translateX(-50%);
   }
-  
+
   .knopka {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 16px 40px;
-    gap: 10px;
-    position: absolute;
-    width: 158px;
-    height: 51px;
-    right: 140px;
-    top: 19px;
-    background: #FFFFFF;
-    border-radius: 40px;
+    right: 0.5%;
   }
 
   .content {
-    height: calc(100vh - 180px);
-    width: 100%;
-    max-width: 1000px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
+    width: 90%;
   }
-  
-  .coctail-image {
-    margin-top:100px;
-    width: 250px;
-    height: 200px;
-    height: auto;
-    object-fit: cover;
-  }
-  
-  .coctail {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    text-align: center;
-  }
-  
-  .coctail2 {
-    margin-top: 0;
-    font-size: 12px;
-    text-align: center;
-  }
-  
+
   .content-block {
-    width: 250px;
-    height: 300px;
-    margin-bottom: 50px;
-    background-size: cover;
-    border-radius: 10px;
-    overflow: hidden;
+    max-width: 100%;
   }
+}
