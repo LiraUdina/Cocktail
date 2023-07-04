@@ -3,17 +3,17 @@ const resetButton = document.getElementById('throwoff'); // Получаем к�
 const contentElement = document.getElementById('content'); // Получаем элемент контента
 
 function displayCocktails(data) {
-  contentElement.innerHTML = ''; 
+  contentElement.innerHTML = '';
 
   if (data.drinks !== null) {
     for (let kol = 0; kol < data.drinks.length; kol++) {
       const cocktail = data.drinks[kol];
-    // Определяем каждый коктейль в массиве drinks и сохраняем его в переменную cocktail
-    // Далее можно использовать переменную cocktail для получения данных о конкретном коктейле
- 
-      const title = cocktail.strDrink; 
-      const description = cocktail.strInstructions; 
-      const imageUrl = cocktail.strDrinkThumb; 
+      // Определяем каждый коктейль в массиве drinks и сохраняем его в переменную cocktail
+      // Далее можно использовать переменную cocktail для получения данных о конкретном коктейле
+
+      const title = cocktail.strDrink;
+      const description = cocktail.strInstructions;
+      const imageUrl = cocktail.strDrinkThumb;
 
       const ingredients = [];
       const measures = [];
@@ -75,17 +75,19 @@ resetButton.addEventListener('click', () => {
   localStorage.removeItem('name'); // Удаляем значение из локального хранилища
 });
 
-nameInput.addEventListener('change', () => {
+nameInput.addEventListener('input', () => {
   const inputText = nameInput.value.trim();
   if (inputText !== '') {
     fetchCocktails(inputText); // Вызов функции для загрузки коктейлей по введенному тексту
+  } else {
+    contentElement.innerHTML = ''; // Очищаем контент, если поле ввода пустое
   }
 });
 
 window.addEventListener('load', () => {
   const savedValue = localStorage.getItem('name');
   if (savedValue) {
-    nameInput.value = decodeURIComponent(savedValue); 
+    nameInput.value = decodeURIComponent(savedValue);
     fetchCocktails(savedValue); // Вызов функции для загрузки коктейлей по сохраненному значению
   }
 });
