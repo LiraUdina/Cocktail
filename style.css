@@ -73,14 +73,14 @@
 
 .coctail2 {
   margin-top: 0;
-  font-size: 12px;
+  font-size: 9px;
   text-align: center;
  }/*описания коктейля*/
 
 .content-block {
   width: 100%;
   max-width: 250px;
-  height: 400px;
+  height: 450px;
   margin-bottom: 50px;
   background-size: cover;
   border-radius: 10px;
