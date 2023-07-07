@@ -69,11 +69,16 @@ function fetchCocktails(inputText) {
         });
 }
 
-// Обработчик события клика на кнопку сброса
-resetButton.addEventListener('click', () => {
-    nameInput.value = '';
-    contentElement.innerHTML = '';
-    localStorage.removeItem('name'); // Удаляем значение из локального хранилища
+// Обработчик события загрузки страницы
+window.addEventListener('load', () => {
+    const savedValue = localStorage.getItem('name');
+    if (savedValue && savedValue.trim() !== '') {
+        nameInput.value = decodeURIComponent(savedValue);
+        fetchCocktails(savedValue); // Вызов функции для загрузки коктейлей по сохраненному значению
+    } else {
+        localStorage.removeItem('name'); // Удаляем значение из локального хранилища
+        fetchCocktails(''); // Вызов функции для загрузки коктейлей без введенного текста
+    }
 });
 
 // Обработчик события ввода в поле поиска
@@ -82,21 +87,15 @@ nameInput.addEventListener('input', () => {
     if (inputText !== '') {
         fetchCocktails(inputText); // Вызов функции для загрузки коктейлей по введенному тексту
     } else {
+        localStorage.removeItem('name'); // Удаляем значение из локального хранилища
         contentElement.innerHTML = ''; // Очищаем элемент контента, если поле ввода пустое
     }
+    localStorage.setItem('name', encodeURIComponent(inputText)); // Сохраняем значение в локальном хранилище
 });
 
-// Обработчик события загрузки страницы
-window.addEventListener('load', () => {
-    const savedValue = localStorage.getItem('name');
-    if (savedValue && savedValue.trim() !== '') {
-        nameInput.value = decodeURIComponent(savedValue);
-        fetchCocktails(savedValue); // Вызов функции для загрузки коктейлей по сохраненному значению
-    } else {
-        nameInput.value = ''; // Очистить поле ввода, если сохраненное значение пустое или содержит только пробельные символы
-        localStorage.removeItem('name'); // Удаляем значение из локального хранилища, если поле ввода пустое
-        fetchCocktails('');
-    }
+// Обработчик события клика на кнопку сброса
+resetButton.addEventListener('click', () => {
+    nameInput.value = '';
+    localStorage.removeItem('name'); 
+    contentElement.innerHTML = '';
 });
-
-fetchCocktails('');
