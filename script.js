@@ -46,9 +46,11 @@ function displayCocktails(data) {
             contentBlock.appendChild(descriptionElement);
 
             const ingredientsListElement = document.createElement('ul');
-            ingredients.forEach((ingredient) => {
+            ingredients.forEach((ingredient, index) => {
                 const li = document.createElement('li');
-                li.innerHTML = ingredient;
+                const measureSpan = document.createElement('span');
+                measureSpan.innerHTML = measures[index];
+                li.innerHTML = `${measureSpan.innerHTML} ${ingredient}`;
                 ingredientsListElement.appendChild(li);
             });
             ingredientsListElement.classList.add('coctail-ingr'); // Добавляем класс списка ингредиентов коктейля
